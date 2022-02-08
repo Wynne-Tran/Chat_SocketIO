@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link
+			rel="stylesheet"
+			href="css/bootstrap.css"
+			
+		/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<title>Chat_With_Wynne</title>
+		
+		
+	</head>
+
+	<body>
+		<div class="card border-secondary mb-3" style="margin-left: 300px; margin-top: 80px;max-width: 40rem;">
+				<div class=" join-container ">
+					<header class="join-header" style="color: #32fbe2;">
+						<h1><i class="bi bi-emoji-smile"></i>
+							</i> Room </h1>
+					</header>
+					<main class="join-main">
+						<form action="/chat.html">
+							<label style="color: #32fbe2;" for="room">Username</label>
+							<h4 id="try"> </h4>
+                            <div class="form-group" id="username">
+								
+								
+							</div>
+
+							<div class="form-group">
+								<label style="color: #32fbe2;" for="room">Room</label>
+								<select class="form-control" name="room" id="room">
+									<option value="JavaScript">JavaScript</option>
+									<option value="Python">Python</option>
+									<option value="PHP">PHP</option>
+									<option value="C#">C#</option>
+									<option value="Ruby">Ruby</option>
+									<option value="Java">Java</option>
+								</select>
+							</div>
+							
+							<button type="submit" class="btn btn-outline-secondary" style="color: #32fbe2;">Join Chat</button>
+						</br>
+						<a href="/logout" class="btn btn-outline-secondary" style="color: #32fbe2;">Log Out</a>
+					</main>
+				</div>
+		</div>
+		<script>
+			const params = new URLSearchParams(window.location.search)
+			document.getElementById("username").innerHTML = 
+			`<input
+				class="form-control"
+				type="text"
+				name="username"
+				readonly
+				value= ${params.get("username")}
+				
+			/>`
+			
+			
+			params.get('username');
+		</script>
+		
+	</body>
+</html>
