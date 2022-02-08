@@ -23,7 +23,7 @@ const io = socketio(server);
 app.post('/login.html', async (req, res) => {
     const user = await UserSchema.find({username : req.body.username})
     try{
-        if(user[0]!= undefined){res.redirect('/index2.html')}
+        if(user[0]!= null){res.redirect('/index2.html')}
         else{
             let newUser = {
                 username: req.body.username,

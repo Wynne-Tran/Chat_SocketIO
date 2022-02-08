@@ -2,10 +2,22 @@ const mongoose = require('mongoose')
 
 
 const msgSchema = new mongoose.Schema({
-    from_user: String,
-    to_user: String,
-    room: String,
-    message: String,
+    from_user: {
+        type: String,
+        require: true,
+    },
+    to_user: {
+        type: String,
+        require: true,
+    },
+    room: {
+        type: String,
+        require: true,
+    },
+    message: {
+        type: String,
+        require: true,
+    },
     date_sent: {
         type: Date,
         default: Date.now,
