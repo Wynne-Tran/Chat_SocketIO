@@ -23,26 +23,26 @@ const io = socketio(server);
 app.post('/login.html', async (req, res) => {
     const user = await UserSchema.find({username : req.body.username})
     try{
-        if(user){res.redirect('/index2.html')}
+        if(user[0]!= undefined){res.redirect('/index2.html')}
+        else{
+            let newUser = {
+                username: req.body.username,
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
+                password: req.body.password,
+                createon: Date.now
+            }
+            console.log(newUser)
+            let createUser = new UserSchema(newUser)
+            req.body.content = new UserSchema(createUser)
+            await req.body.content.save(createUser)
+            .then(res.status(200).redirect('/login.html'))
+            .catch( e => console.log(e))
+        }
     }
     catch (e) {
         console.log(e)
     }
-
-    let newUser = {
-        username: req.body.username,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        password: req.body.password,
-        createon: Date.now
-    }
-    console.log(newUser)
-    let createUser = new UserSchema(newUser)
-    req.body.content = new UserSchema(createUser)
-    await req.body.content.save(createUser)
-    .then(res.status(200).redirect('/login.html'))
-    .catch( e => console.log(e))
-
    
 })
 
